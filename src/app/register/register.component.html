@@ -34,6 +34,16 @@
             </div>
             <p class="help is-danger" *ngIf="!ispasswordProper">Password must be minimum 8 characters long,<br> contain at least 1 digit and at least 1 special sign</p>
           </div>
+
+          <div class="field">
+            <label class="label has-text-white">Sex</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input is-hovered is-rounded is-link" [value]="sexSignal()" (keyup)="assignSex($event)" type="text" formControlName="Sex" (blur)="CheckSex()">
+              <span class="icon is-small is-left">
+                <i class="fa fas fa-venus-mars"></i>
+              </span>
+            </div>
+          </div>
           
           <div class="field">
             <label class="label has-text-white">Email</label>

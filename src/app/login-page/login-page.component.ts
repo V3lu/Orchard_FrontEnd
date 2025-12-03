@@ -65,6 +65,7 @@ export class LoginPageComponent{
             Email: data.user.email,
             Role: data.user.role,
             Age: data.user.age,
+            Sex: data.user.sex,
             Region: data.user.region,
             City: data.user.city,
             ProfilePhoto: data.user.ProfilePhoto
@@ -81,6 +82,7 @@ export class LoginPageComponent{
           this.LoggedUserData.SetLoggedUserRole(result.user.Role!);
           this.userRecived = result.user;
           this.JWTToken = result.token;
+          console.log(this.LoggedUserData.LoggedUser);
           this.ValidateUser();
         },
         error: (error) => {

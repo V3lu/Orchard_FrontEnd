@@ -51,6 +51,8 @@ export class LoggedUserProfileComponent {
   LoggedUserRole! : String;
   selectedWojewodztwo : any;
 
+  userSex?: string = 'sex';
+
   doesUsernameExists : boolean = false;
   doesEmailExist : boolean = false;
   wojewodztwa: string[] = ['Zachodnio-Pomorskie', 'Pomorskie', 'Warmińsko-Mazurskie',
@@ -62,6 +64,7 @@ export class LoggedUserProfileComponent {
   constructor(private fb : FormBuilder, private apiComm : APIConnectionService, private loggedUserData : LoggedUserDataServiceService, private router1 : Router){
     this.LoggedUserRole = loggedUserData.GetLoggedUserRole();
     this.formData = new FormData();
+    this.userSex = loggedUserData.LoggedUser.Sex;
     this.selectedWojewodztwo = loggedUserData.LoggedUser.Region;
     this.userdataform = this.fb.group({
       username:loggedUserData.LoggedUser.Username,

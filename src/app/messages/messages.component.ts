@@ -55,13 +55,14 @@ export class MessagesComponent implements OnInit{
         this.messagess = result.data.messages;
         this.users = result.data.users;  
         this.messagess.forEach((message: { authorId: any; content: any; sendDate: Date;}) => {
-          this.users.forEach((user: { id: any; username:string; age:number;}) => {
+          this.users.forEach((user: { id: any; username:string; age:number; sex:string}) => {
             if(message.authorId == user.id){
               let prof = new Blob;
               let um : userMessage = {
                 ProfilePhoto: prof,
                 Username: user.username,
                 Age: user.age,
+                Sex: user.sex,
                 MessageText: ": " + message.content,
                 SendDate: message.sendDate,
                 AuthorId: user.id
@@ -115,11 +116,12 @@ export class MessagesComponent implements OnInit{
         this.messagess = result.data.messages;
         this.users = result.data.users;  
         this.messagess.forEach((message: { authorId: any; content: any; sendDate: Date;}) => {
-          this.users.forEach((user: { id: any; username:string; age:number;}) => {
+          this.users.forEach((user: { id: any; username:string; age:number; sex: string}) => {
             if(message.authorId == user.id){
               let prof = new Blob;
               let um : userMessage = {
                 ProfilePhoto: prof,
+                Sex: user.sex,
                 Username: user.username,
                 Age: user.age,
                 MessageText: ":  " + message.content,
@@ -216,6 +218,7 @@ export class MessagesComponent implements OnInit{
           Email: data.userToReturn.email,
           Role: data.userToReturn.role,
           Age: data.userToReturn.age,
+          Sex: data.userToReturn.sex,
           Region: data.userToReturn.region,
           City: data.userToReturn.city,
         };

@@ -91,8 +91,8 @@ export class APIConnectionService {
     return this.http.post<any>(this.loginControllerUrl, {email, password}, {observe: 'response'})
   }
 
-  register(username:string, password:string, email:string, age:string, city:string, region:string){
-    return this.http.post<any>(this.RegisterControllerUrl, {username, password, email, age, city, region})
+  register(username:string, password:string, email:string, age:string, city:string, region:string, sex:string){
+    return this.http.post<any>(this.RegisterControllerUrl, {username, password, email, age, city, region, sex})
   }
 
   getNotificationsFrom3Months(Id : any){

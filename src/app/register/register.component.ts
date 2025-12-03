@@ -23,6 +23,7 @@ export class RegisterComponent {
   regionSignal = signal('');
   citySignal = signal('');
   ageSignal = signal('');
+  sexSignal = signal('');
 
   usernameForm : String = "";
   passwordForm : String = "";
@@ -46,6 +47,7 @@ export class RegisterComponent {
   isAgeEmpty : boolean = false;
   isEmailProper : boolean = true;
   ispasswordProper : boolean = true;
+  isSexProper: boolean = false;
   isCityProper : boolean = true;
   isAgeProper : boolean = true;
   registeredUser : User = {};
@@ -61,6 +63,7 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       Username: [''],
       Password: [''],
+      Sex: [''],
       Email: [''],
       Region: [''],
       Age: [''],
@@ -72,6 +75,10 @@ export class RegisterComponent {
   assignUsername(event : Event){
     const value = (event.target as HTMLInputElement).value;
     this.usernameSignal.set(value);
+  }
+  assignSex(event : Event){
+    const value = (event.target as HTMLInputElement).value;
+    this.sexSignal.set(value);
   }
   assignPassword(event : Event){
     const value = (event.target as HTMLInputElement).value;
@@ -143,9 +150,20 @@ export class RegisterComponent {
     }
   }
 
+  CheckSex(){
+    const value = this.sexSignal();
+    if(value == ""){
+      this.isSexProper = false;
+      document.getElementById("btnsub")?.setAttribute('disabled', 'disabled');
+    }
+    else{
+      this.isSexProper = true;
+      this.UnlockSubmitButton()
+    }
+  }
+
   Register(event : Event){
-    const zmienne = new Array(this.usernameSignal(), this.passwordSignal(), this.emailSignal(), this.citySignal(), this.ageSignal().toString(), this.selectedWojewodztwo);
-    if(this.usernameSignal() == '' || this.passwordSignal() == '' || this.emailSignal() == '' || this.citySignal() == '' || this.ageSignal() == '' || this.selectedWojewodztwo == ''){
+    if(this.usernameSignal() == '' || this.sexSignal() == '' || this.passwordSignal() == '' || this.emailSignal() == '' || this.citySignal() == '' || this.ageSignal() == '' || this.selectedWojewodztwo == ''){
       this.cannotSendFormData = true;
     }
     else{
@@ -156,9 +174,10 @@ export class RegisterComponent {
       const email = this.registerForm.get('Email')?.value;
       const age = this.registerForm.get('Age')?.value;
       const city = this.registerForm.get('City')?.value;
+      const sex = this.registerForm.get('Sex')?.value;
       const region = this.selectedWojewodztwo;
   
-      this.apicomm.register(uname, pass, email, age, city, region)
+      this.apicomm.register(uname, pass, email, age, city, region, sex)
       .pipe(
         catchError(error => {
           if (error.status === 404) {
@@ -267,8 +286,7 @@ export class RegisterComponent {
   }
 
   UnlockSubmitButton(){
-    let xd = this.regionSignal();
-    if(this.usernameSignal() != '' && this.passwordSignal() != '' && this.emailSignal() != '' && this.citySignal() != '' && this.ageSignal() != '' && this.regionSignal() != '' && this.IsFormDoneCorrectly()){
+    if(this.usernameSignal() != '' && this.sexSignal() != '' && this.passwordSignal() != '' && this.emailSignal() != '' && this.citySignal() != '' && this.ageSignal() != '' && this.regionSignal() != '' && this.IsFormDoneCorrectly()){
       document.getElementById("btnsub")?.removeAttribute('disabled');
     }
   }

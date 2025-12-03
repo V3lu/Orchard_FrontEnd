@@ -37,6 +37,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="column has-text-centered">
+                    <div class="column has-text-centered">
+                        <div class="field">
+                          <label class="label has-text-white">Sex</label>
+                          <div class="control has-icons-left has-icons-right">
+                            <input formControlName="sex" class="input is-hovered is-rounded is-link" type="text" placeholder="male">
+                            <span class="icon is-small is-left">
+                              <i class="fa fas fa-venus-mars"></i>
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="columns is-centered">
@@ -57,6 +70,7 @@
                             <p>
                               <strong>{{user.Username + "  "}}</strong>
                               <small>{{user.Age}}</small>
+                              <small>{{user.Sex}}</small>
                               @if(user.Role == "FUA"){
                                 <img src="assets/images/fullaccessicon.png" width="19px" height="19px" alt="Image" />
                               }

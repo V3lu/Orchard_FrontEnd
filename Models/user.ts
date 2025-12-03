@@ -5,6 +5,7 @@ export interface User {
     Region?: string;
     Role?: string;
     Age?: number;
+    Sex?: string;
     City?: string;
     ProfilePhoto?: any;
 }

@@ -57,6 +57,7 @@ export class PeopleSearchComponent{
           Email: data.userToReturn.email,
           Role: data.userToReturn.role,
           Age: data.userToReturn.age,
+          Sex: data.userToReturn.sex,
           Region: data.userToReturn.region,
           City: data.userToReturn.city,
         };
@@ -80,7 +81,8 @@ export class PeopleSearchComponent{
     this.formData.set('Id', this.loggedUserData.GetLoggedUserId()), 
     this.formData.set('Region', this.userdataform.get('region')?.value),
     this.formData.set('Age', this.userdataform.get('age')?.value),
-    this.formData.set('City', this.userdataform.get('city')?.value)
+    this.formData.set('City', this.userdataform.get('city')?.value),
+    this.formData.set('Sex', this.userdataform.get('sex')?.value),
     this.index = 0;
     this.apiComm.GetUsersSearchedForWithFilters(this.formData)
     .pipe(
@@ -93,12 +95,13 @@ export class PeopleSearchComponent{
       map((response) => {
         const data = response.body;
         let users = new Array();
-        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; }) => {
+        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; sex: string}) => {
           let user : User = {
             Id: element.id,
             Username: element.username,
             Email: element.email,
             Role: element.role,
+            Sex: element.sex,
             Age: element.age,
             Region: element.region,
             City: element.city,

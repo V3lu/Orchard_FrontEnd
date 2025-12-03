@@ -70,11 +70,12 @@ export class DashboardComponent implements OnInit{
         this.messagess = result.data.messages;
         this.users = result.data.users;  
         this.messagess.forEach((message: { authorId: any; content: any; sendDate: Date;}) => {
-          this.users.forEach((user: { id: any; username:string; age:number;}) => {
+          this.users.forEach((user: { id: any; username: string; age: number; sex: string}) => {
             if(message.authorId == user.id){
               let prof = new Blob;
               let um : userMessage = {
                 ProfilePhoto: prof,
+                Sex: user.sex,
                 Username: user.username,
                 Age: user.age,
                 MessageText: ": " + message.content,
