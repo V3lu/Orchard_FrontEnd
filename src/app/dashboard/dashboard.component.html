@@ -6,48 +6,51 @@
     
                 </div>
                 <div class="column has-text-centered">
-                  <h1 class="title">Latest 5 messages</h1>
-                  <h2 class="subtitle">
-                    Here will always be shown your last 5 messages
-                  </h2>
-                    <article class="panel">               
-                        @for (user of objectsToDisplay; track user) {
-                          <div class="panel-block is-block">
-                            <div class="columns is-vcentered">
-                              <div class="column has-text-centered is-one-fifth">
-                                <figure class="image is-inline-block">
-                                  <img class={{user.Username}} alt="Image"/>
-                                </figure>
+                  <div class="columns is-multiline">
+                    <div class="column is-one-quarter" *ngFor="let user of usersArrived">
+                        <div class="box has-background-light">
+                            <article class="media">
+                              <div class="media-left">
+                                <a (click)="SeeUserProfile(user.Id)">
+                                  <figure class="image is-64x64">
+                                    <img id={{user.Id}} alt="Image" />
+                                  </figure>
+                                </a>
                               </div>
-                              <div class="column has-text-left is-half">
-                                <strong>{{user.Username}}</strong>
-                                {{user.Sex}}
-                                {{user.MessageText}}
-                              </div>
-                              <div class="column has-icons-right has-text-right is-two-fifth">
-                                <div class="columns is-vcentered">
-                                  <div class="column"></div>
-                                  <div class="column has-icons-left has-text-left">
-                                    <a>
-                                      <span class="icon is-small" style="font-size: 25px;">
-                                        <i class="fa fas fa-envelope" aria-hidden="true" (click)="SendMSG(user.AuthorId)"></i>
-                                      </span>
-                                    </a>
-                                  </div>
-                                  <div class="column has-icons-left has-text-left is-three-quarters" >
-                                    <a>
-                                      <span class="icon is-small" style="font-size: 25px;">
-                                        <i class="fa fas fa-arrow-right" aria-hidden="true" (click)="SeeUserProfile(user.AuthorId)"></i>
-                                      </span>
-                                    </a>
-                                  </div>
+                              <div class="media-content">
+                                <div class="content">
+                                  <p>
+                                    <strong>{{user.Username + "  "}}</strong>
+                                    <small>{{user.Age}}</small>
+                                    <small>{{user.Sex}}</small>
+                                    @if(user.Role == "FUA"){
+                                      <img src="assets/images/fullaccessicon.png" width="19px" height="19px" alt="Image" />
+                                    }
+                                    <br />
+                                    <small>City: {{user.City}}</small>
+                                    <br />
+                                    <small>Region: {{user.Region}}</small>
+                                  </p>
                                 </div>
+                                <nav class="level is-mobile">
+                                  <div class="level-left">
+                                    <a class="level-item" aria-label="retweet">
+                                      <span class="icon is-small">
+                                        <i class="fa fas fa-envelope" aria-hidden="true" (click)="SendMSG(user.Id)"></i>
+                                      </span>
+                                    </a>
+                                    <a class="level-item" aria-label="reply">
+                                        <span class="icon is-small">
+                                          <i class="fa fas fa-user" aria-hidden="true" (click)="SeeUserProfile(user.Id)"></i>
+                                        </span>
+                                      </a>
+                                  </div>
+                                </nav>
                               </div>
-                            </div>
-                          </div>
-                        }
-                        
-                      </article>
+                            </article>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <div class="column has-text-centered">
                     

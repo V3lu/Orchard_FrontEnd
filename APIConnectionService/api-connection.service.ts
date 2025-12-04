@@ -30,6 +30,15 @@ export class APIConnectionService {
   PaymentsCheck = 'https://localhost:7023/api/Payments/paymentcheck';
   PaymentsStoretxhash = 'https://localhost:7023/api/Payments/storetxhash';
   PaymentsGettxhash = 'https://localhost:7023/api/Payments/gettxhash';
+  UserControllerGet5UsersFromLocation = 'https://localhost:7023/api/Users/userControllerGet5UsersFromLocation';
+
+  Get5UsersFromLocation(Id : any){
+    const token = this.TC.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<any>(this.UserControllerGet5UsersFromLocation, {Id}, {observe: 'response', headers: headers })
+  }
 
   PermitMesssageSend(Id : any){
     const token = this.TC.getToken();

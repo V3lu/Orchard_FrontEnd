@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit{
   messagess : any;
   users : any;
   objectsToDisplay = new Array();
+  usersArrived = new Array();
   MessageToSendForm: FormGroup;
   formDataMessage: FormData;
   currentUserToSendMessageTo : any;
@@ -132,6 +133,49 @@ export class DashboardComponent implements OnInit{
         console.error('API Error:', error);
       }
     });
+
+    this.apiComm.Get5UsersFromLocation(this.LoggedUserData.LoggedUser.Id)
+    .pipe(
+      catchError(error => {
+        return throwError(() => new Error("Error occured"));
+      }),
+      map((response) => {
+        const data = response.body;
+        let users = new Array();
+        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; sex: string}) => {
+          let user : User = {
+            Id: element.id,
+            Username: element.username,
+            Email: element.email,
+            Role: element.role,
+            Sex: element.sex,
+            Age: element.age,
+            Region: element.region,
+            City: element.city,
+            ProfilePhoto: element.ProfilePhoto
+          };
+          users.push(user);
+        });
+        this.usersArrived = users;
+        return { users };
+      })
+    )
+    .subscribe({
+      next: (result) => {
+        result.users.forEach(element => {
+          console.log(element);
+
+          this.apiComm.GetUserImage(element.Id).subscribe(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const img = document.getElementById(element.Id) as HTMLImageElement;
+            img.src = url;
+          });
+        })
+      }
+    })
+
+
+
   }
 
   async WaitForTransactionConfirmation(txhash : string){

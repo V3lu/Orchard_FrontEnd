@@ -30,7 +30,8 @@ export class PeopleSearchComponent{
     this.userdataform = this.fb.group({
       region:loggedUserData.LoggedUser.Region,
       age:loggedUserData.LoggedUser.Age,
-      city:loggedUserData.LoggedUser.City
+      city:loggedUserData.LoggedUser.City,
+      sex:loggedUserData.LoggedUser.Sex
     })
     this.formData = new FormData();
 
@@ -88,7 +89,7 @@ export class PeopleSearchComponent{
     .pipe(
       catchError(error => {
         if (error.status === 404) {
-          alert("Podaj kryteria wyszukiwania użytkowników");
+          alert("No users found");
         }
         return throwError(() => new Error("Error occured"));
       }),
