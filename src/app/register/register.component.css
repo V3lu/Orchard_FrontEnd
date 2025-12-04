@@ -3,3 +3,9 @@
     display: flex;
     justify-content: center;
 }
+
+.hero{
+    background-image: url("/assets/images/spaceBackgroundRegister.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

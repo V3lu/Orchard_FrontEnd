@@ -2,7 +2,7 @@
     <form [formGroup]="userdataform" (ngSubmit)="SubmitData($event)">
         <div class="container">
             <div class="columns is-vcentered">
-                <div class="column has-text-centered">
+                <div class="column has-text-centered is-one-quarter">
                   <div class="field">
                     <label class="label has-text-white">Region</label>
                     <div class="control has-icons-left has-icons-right">
@@ -12,8 +12,6 @@
                       </span>
                     </div>
                   </div>
-                </div>
-                <div class="column has-text-centered">
                   <div class="field">
                     <label class="label has-text-white">Age</label>
                     <div class="control has-icons-left has-icons-right">
@@ -23,85 +21,77 @@
                       </span>
                     </div>
                   </div>
+                    <div class="field">
+                      <label class="label has-text-white">City</label>
+                      <div class="control has-icons-left has-icons-right">
+                        <input formControlName="city" class="input is-hovered is-rounded is-link" type="text" placeholder="city">
+                        <span class="icon is-small is-left">
+                          <i class="fa fas fa-building"></i>
+                        </span>
+                      </div>
+                    </div>
+                      <div class="field">
+                        <label class="label has-text-white">Sex</label>
+                        <div class="control has-icons-left has-icons-right">
+                          <input formControlName="sex" class="input is-hovered is-rounded is-link" type="text" placeholder="male">
+                          <span class="icon is-small is-left">
+                            <i class="fa fas fa-venus-mars"></i>
+                          </span>
+                        </div>
+                      </div>
+                    <button type="submit" class="button is-medium is-success">Search</button>
                 </div>
                 <div class="column has-text-centered">
-                    <div class="column has-text-centered">
-                        <div class="field">
-                          <label class="label has-text-white">City</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input formControlName="city" class="input is-hovered is-rounded is-link" type="text" placeholder="city">
-                            <span class="icon is-small is-left">
-                              <i class="fa fas fa-building"></i>
-                            </span>
-                          </div>
+                  @if(usersArrived.length != 0){
+                    <div class="columns is-multiline">
+                        <div class="column is-one-quarter" *ngFor="let user of usersArrived">
+                            <div class="box has-background-light">
+                                <article class="media">
+                                  <div class="media-left">
+                                    <a (click)="SeeUserProfile(user.Id)">
+                                      <figure class="image is-96x96">
+                                        <img id={{user.Id}} alt="Image" />
+                                      </figure>
+                                    </a>
+                                  </div>
+                                  <div class="media-content">
+                                    <div class="content">
+                                      <p>
+                                        <strong>{{user.Username + "  "}}</strong>
+                                        <small>{{user.Age}}</small>
+                                        <small>{{user.Sex}}</small>
+                                        @if(user.Role == "FUA"){
+                                          <img src="assets/images/fullaccessicon.png" width="19px" height="19px" alt="Image" />
+                                        }
+                                        <br />
+                                        <small>City: {{user.City}}</small>
+                                        <br />
+                                        <small>Region: {{user.Region}}</small>
+                                      </p>
+                                    </div>
+                                    <nav class="level is-mobile has-text-centered">
+                                      <div class="level-left has-text-centered">
+                                        <a class="level-item" aria-label="retweet">
+                                          <span class="icon is-small">
+                                            <i class="fa fas fa-envelope" aria-hidden="true" (click)="SendMSG(user.Id)"></i>
+                                          </span>
+                                        </a>
+                                        <a class="level-item" aria-label="reply">
+                                            <span class="icon is-small">
+                                              <i class="fa fas fa-user" aria-hidden="true" (click)="SeeUserProfile(user.Id)"></i>
+                                            </span>
+                                          </a>
+                                      </div>
+                                    </nav>
+                                  </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column has-text-centered">
-                    <div class="column has-text-centered">
-                        <div class="field">
-                          <label class="label has-text-white">Sex</label>
-                          <div class="control has-icons-left has-icons-right">
-                            <input formControlName="sex" class="input is-hovered is-rounded is-link" type="text" placeholder="male">
-                            <span class="icon is-small is-left">
-                              <i class="fa fas fa-venus-mars"></i>
-                            </span>
-                          </div>
-                        </div>
-                    </div>
+                  }
                 </div>
             </div>
         </div>
-        <div class="columns is-centered">
-            <button type="submit" class="button is-medium is-success">Search</button>
-        </div>
-        @if(usersArrived.length != 0){
-          <div class="columns is-multiline">
-              <div class="column is-one-quarter" *ngFor="let user of usersArrived">
-                  <div class="box has-background-light">
-                      <article class="media">
-                        <div class="media-left">
-                          <a (click)="SeeUserProfile(user.Id)">
-                            <figure class="image is-64x64">
-                              <img id={{user.Id}} alt="Image" />
-                            </figure>
-                          </a>
-                        </div>
-                        <div class="media-content">
-                          <div class="content">
-                            <p>
-                              <strong>{{user.Username + "  "}}</strong>
-                              <small>{{user.Age}}</small>
-                              <small>{{user.Sex}}</small>
-                              @if(user.Role == "FUA"){
-                                <img src="assets/images/fullaccessicon.png" width="19px" height="19px" alt="Image" />
-                              }
-                              <br />
-                              <small>City: {{user.City}}</small>
-                              <br />
-                              <small>Region: {{user.Region}}</small>
-                            </p>
-                          </div>
-                          <nav class="level is-mobile">
-                            <div class="level-left">
-                              <a class="level-item" aria-label="retweet">
-                                <span class="icon is-small">
-                                  <i class="fa fas fa-envelope" aria-hidden="true" (click)="SendMSG(user.Id)"></i>
-                                </span>
-                              </a>
-                              <a class="level-item" aria-label="reply">
-                                  <span class="icon is-small">
-                                    <i class="fa fas fa-user" aria-hidden="true" (click)="SeeUserProfile(user.Id)"></i>
-                                  </span>
-                                </a>
-                            </div>
-                          </nav>
-                        </div>
-                      </article>
-                  </div>
-              </div>
-          </div>
-    }
     </form>
 </section>
 

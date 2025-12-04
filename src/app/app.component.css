@@ -1,31 +1,10 @@
 
-  .navbar-menu.is-active {
-    display: block;
-  }
+.navbar-item{
+  transition: 0.3s ease;
+}
 
-  .navbar{
-    background-color: #F7F7F7;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-  }
+.navbar-item:hover{
+  background-color: lightblue;
+  transition: 0.3s ease;
+}
 
-  .navbar-menu {
-    flex-grow: initial!important;
-    flex-shrink: initial!important;
-  }
-
-  .navbar .navbar-menu{
-    flex-grow: initial;
-    flex-shrink: initial;
-  }
-
-  .navbar-end {
-    flex-grow: initial!important;
-    flex-shrink: initial!important;
-  }
-
-  .navbar .navbar-end{
-    flex-grow: initial;
-    flex-shrink: initial;
-  }

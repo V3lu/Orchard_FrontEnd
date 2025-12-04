@@ -3,7 +3,7 @@
 }
 
 .hero{
-    background-image: url("C:\\Users\\aethi\\source\\repos\\OrchFront\\src\\assets\\images\\cosmos2.png");
+    background-image: url("/assets/images/cosmos2.png");
     background-repeat: no-repeat;
     background-size: cover;
 }

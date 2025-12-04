@@ -1,3 +1,9 @@
 .title{
     margin-top: 20%;
 }
+
+.hero{
+    background-image: url("/assets/images/spaceBackgroundRest.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

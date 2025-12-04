@@ -1,124 +1,129 @@
 <section class="hero is-dark is-fullheight">
-  <div class="columns is-vcentered">
-    <div class="column">
-
-    </div>
-    <div class="column has-text-centered">
       <div class="formContainer">
-      <form [formGroup]="registerForm" (ngSubmit)="Register($event)">
-        <div class="field">
-            <label class="label has-text-white">Username</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-hovered is-rounded is-link" [value]="usernameSignal()" (keyup)="assignUsername($event)" type="text" formControlName="Username" (blur)="CheckUsername()">
-              <span class="icon is-small is-left">
-                <i class="fa fas fa-user"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fas fa-check" *ngIf="!usernameIcon"></i>
-              </span>
+        <form [formGroup]="registerForm" (ngSubmit)="Register($event)">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <div class="field">
+              <label class="label has-text-white">Username</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input is-hovered is-rounded is-link" [value]="usernameSignal()" (keyup)="assignUsername($event)" type="text" formControlName="Username" (blur)="CheckUsername()">
+                <span class="icon is-small is-left">
+                  <i class="fa fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fa fas fa-check" *ngIf="!usernameIcon"></i>
+                </span>
+              </div>
+              <p class="help is-danger" *ngIf="doesUsernameExists">This username is already taken</p>
+              <p class="help is-danger" *ngIf="isUsernameEmpty">Username must not be empty</p>
             </div>
-            <p class="help is-danger" *ngIf="doesUsernameExists">This username is already taken</p>
-            <p class="help is-danger" *ngIf="isUsernameEmpty">Username must not be empty</p>
-          </div>
-          
-          <div class="field">
-            <label class="label has-text-white">Password</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-hovered is-rounded is-link" [value]="passwordSignal()" (keyup)="assignPassword($event)" type="password" formControlName="Password" (blur)="CheckPassword()">
-              <span class="icon is-small is-left">
-                <i class="fa fas fa-key"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fas fa-check" *ngIf="!passwordIcon"></i>
-              </span>
+            
+            <div class="field">
+              <label class="label has-text-white">Password</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input is-hovered is-rounded is-link" [value]="passwordSignal()" (keyup)="assignPassword($event)" type="password" formControlName="Password" (blur)="CheckPassword()">
+                <span class="icon is-small is-left">
+                  <i class="fa fas fa-key"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fa fas fa-check" *ngIf="!passwordIcon"></i>
+                </span>
+              </div>
+              <p class="help is-danger" *ngIf="!ispasswordProper">Password must be minimum 8 characters long,<br> contain at least 1 digit and at least 1 special sign</p>
             </div>
-            <p class="help is-danger" *ngIf="!ispasswordProper">Password must be minimum 8 characters long,<br> contain at least 1 digit and at least 1 special sign</p>
-          </div>
 
-          <div class="field">
-            <label class="label has-text-white">Sex</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-hovered is-rounded is-link" [value]="sexSignal()" (keyup)="assignSex($event)" type="text" formControlName="Sex" (blur)="CheckSex()">
-              <span class="icon is-small is-left">
-                <i class="fa fas fa-venus-mars"></i>
-              </span>
+            <div class="field">
+              <label class="label has-text-white">Sex</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input is-hovered is-rounded is-link" [value]="sexSignal()" (keyup)="assignSex($event)" type="text" formControlName="Sex" (blur)="CheckSex()">
+                <span class="icon is-small is-left">
+                  <i class="fa fas fa-venus-mars"></i>
+                </span>
+              </div>
             </div>
-          </div>
-          
-          <div class="field">
-            <label class="label has-text-white">Email</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-hovered is-rounded is-link" [value]="emailSignal()" (keyup)="assignEmail($event)" type="text" formControlName="Email" (blur)="CheckEmail()">
-              <span class="icon is-small is-left">
-                <i class="fa fas fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fas fa-check" *ngIf="!emailIcon"></i>
-              </span>
             </div>
-            <p class="help is-danger" *ngIf="doesEmailExist">This email is already taken</p>
-            <p class="help is-danger" *ngIf="!isEmailProper">Enter a proper email</p>
-          </div>
-    
-          <div class="field">
-            <label class="label has-text-white">Age</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-hovered is-rounded is-link" [value]="ageSignal()" (keyup)="assignAge($event)" type="text" formControlName="Age" (blur)="CheckAge()">
-              <span class="icon is-small is-left">
-                <i class="fa fas fa-id-card-o"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fas fa-check" *ngIf="!ageIcon"></i>
-              </span>
-            </div>
-            <p class="help is-danger" *ngIf="isAgeEmpty">Age must not be empty</p>
-            <p class="help is-danger" *ngIf="!isAgeProper">Age must be a number</p>
-          </div>
-          
-          <div class="field">
-            <label class="label has-text-white">City</label>
-            <div class="control has-icons-left has-icons-right">
-              <input class="input is-hovered is-rounded is-link" [value]="citySignal()" (keyup)="assignCity($event)" type="text" formControlName="City" (blur)="CheckCity()">
-              <span class="icon is-small is-left">
-                <i class="fa fas fa-building"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fa fas fa-check" *ngIf="!cityIcon"></i>
-              </span>
-            </div>
-            <p class="help is-danger" *ngIf="!isCityProper">Enter a proper city</p>
-          </div>
-    
-          <div class="field">
-            <label class="label has-text-white">Region</label>
-            <div class="control has-icons-left has-icons-right">
-              <div class="select is-hovered is-rounded is-link">
-                <select [(ngModel)]="selectedWojewodztwo" [ngModelOptions]="{standalone: true}" [value]="regionSignal()" (change)="CheckRegion($event)">
-                    <option *ngFor="let c of wojewodztwa" [ngValue]="c">{{c}}</option>
-                  </select>
+            <div class="column">
+              <div class="field">
+                <label class="label has-text-white">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input is-hovered is-rounded is-link" [value]="emailSignal()" (keyup)="assignEmail($event)" type="text" formControlName="Email" (blur)="CheckEmail()">
                   <span class="icon is-small is-left">
-                    <i class="fa fas fa-solid fa-globe"></i>
+                    <i class="fa fas fa-envelope"></i>
                   </span>
+                  <span class="icon is-small is-right">
+                    <i class="fa fas fa-check" *ngIf="!emailIcon"></i>
+                  </span>
+                </div>
+                <p class="help is-danger" *ngIf="doesEmailExist">This email is already taken</p>
+                <p class="help is-danger" *ngIf="!isEmailProper">Enter a proper email</p>
+              </div>
+        
+              <div class="field">
+                <label class="label has-text-white">Age</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input is-hovered is-rounded is-link" [value]="ageSignal()" (keyup)="assignAge($event)" type="text" formControlName="Age" (blur)="CheckAge()">
+                  <span class="icon is-small is-left">
+                    <i class="fa fas fa-id-card-o"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fa fas fa-check" *ngIf="!ageIcon"></i>
+                  </span>
+                </div>
+                <p class="help is-danger" *ngIf="isAgeEmpty">Age must not be empty</p>
+                <p class="help is-danger" *ngIf="!isAgeProper">Age must be a number</p>
+              </div>
+              
+              <div class="field">
+                <label class="label has-text-white">City</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input is-hovered is-rounded is-link" [value]="citySignal()" (keyup)="assignCity($event)" type="text" formControlName="City" (blur)="CheckCity()">
+                  <span class="icon is-small is-left">
+                    <i class="fa fas fa-building"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fa fas fa-check" *ngIf="!cityIcon"></i>
+                  </span>
+                </div>
+                <p class="help is-danger" *ngIf="!isCityProper">Enter a proper city</p>
               </div>
             </div>
           </div>
-          
-          <div class="field has-text-centered">
-            <div class="control">
-              <button id="btnsub" type="submit" class="button is-success">Register</button>
+          <div class="columns is-vcentered">
+            <div class="column">
+
             </div>
-            <p class="help is-danger" *ngIf="isUserRegisteredAlready">You have already registered an account</p>
-            <p class="help is-danger" *ngIf="cannotSendFormData">Fill all fields</p>
+            <div class="column has-text-centered">
+              <div class="field">
+                <label class="label has-text-white">Region</label>
+                <div class="control has-icons-left has-icons-right">
+                  <div class="select is-hovered is-rounded is-link">
+                    <select [(ngModel)]="selectedWojewodztwo" [ngModelOptions]="{standalone: true}" [value]="regionSignal()" (change)="CheckRegion($event)">
+                        <option *ngFor="let c of wojewodztwa" [ngValue]="c">{{c}}</option>
+                      </select>
+                      <span class="icon is-small is-left">
+                        <i class="fa fas fa-solid fa-globe"></i>
+                      </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="field has-text-centered">
+                <div class="control">
+                  <button id="btnsub" type="submit" class="button is-success">Register</button>
+                </div>
+                <p class="help is-danger" *ngIf="isUserRegisteredAlready">You have already registered an account</p>
+                <p class="help is-danger" *ngIf="cannotSendFormData">Fill all fields</p>
+              </div>
+              <br>
+              <p class="help">Already have an accout? <a [routerLink]="['']">Log in!</a></p>
+              </div>
+            <div class="column">
+              
+            </div>
           </div>
-          <br>
-          <p class="help">Already have an accout? <a [routerLink]="['']">Log in!</a></p>
-    </form>
-  </div>
-    </div>
-    <div class="column">
       
-    </div>
-  </div>
+        </form>
+      </div>
 </section>
 
 

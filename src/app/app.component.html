@@ -8,22 +8,22 @@
 
   <div id="navig" class="navbar-menu">
     <div class="navbar-start">
+      <div class="navbar-brand">
+        <a class="navbar-item" [routerLink]="['/Dashboard']">
+          <img src="assets/images/logo.png" alt="Logo">
+        </a>
+      </div>
       <a class="navbar-item" [routerLink]="['/Profile']">Your profile</a>
 
       <a class="navbar-item" [routerLink]="['/Notifications']">Recent Notifications</a>
 
       <a class="navbar-item" [routerLink]="['/Search']">Search for people</a>
 
-      <div class="navbar-brand">
-        <a class="navbar-item" [routerLink]="['/Dashboard']">
-          <img src="assets/images/logo.png" alt="Logo">
-        </a>
-      </div>
-
       <a class="navbar-item" [routerLink]="['/Messages']">Your Messages</a>
 
       <a class="navbar-item" [routerLink]="['/Payments']">Transactions</a>
-
+    </div>
+    <div class="navbar-end">
       <a class="navbar-item" [routerLink]="['/Contact']">Contact Us</a>
 
       <a class="navbar-item" (click)="Logout()">Logout</a>

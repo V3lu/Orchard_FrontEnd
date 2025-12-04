@@ -17,3 +17,9 @@ img{
     height: 64px;
     width: 64px;
 }
+
+.hero{
+    background-image: url("/assets/images/spaceBackgroundRest.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
