@@ -4,7 +4,6 @@ import { APIConnectionService } from '../../../APIConnectionService/api-connecti
 import { LoggedUserDataServiceService } from '../../../LoggedUserData/logged-user-data-service.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { catchError, map, single, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-logged-user-profile',

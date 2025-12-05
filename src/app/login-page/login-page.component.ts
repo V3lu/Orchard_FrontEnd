@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterOutlet, RouterLink, RouterModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, RouterModule, CommonModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })

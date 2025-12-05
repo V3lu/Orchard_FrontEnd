@@ -5,7 +5,6 @@ import { User } from '../../../Models/user';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { catchError, map, throwError } from 'rxjs';
-import { NotificationMy } from '../../../Models/Notification';
 
 @Component({
   selector: 'app-other-user-profile',

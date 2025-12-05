@@ -4,10 +4,8 @@ import { APIConnectionService } from '../../../APIConnectionService/api-connecti
 import { LoggedUserDataServiceService } from '../../../LoggedUserData/logged-user-data-service.service';
 import { catchError, map, throwError } from 'rxjs';
 import { User } from '../../../Models/user';
-import { resourceUsage } from 'process';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-people-search',

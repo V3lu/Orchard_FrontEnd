@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoggedUserDataServiceService } from '../../../LoggedUserData/logged-user-data-service.service';
 import { APIConnectionService } from '../../../APIConnectionService/api-connection.service';
-import { subscribe } from 'diagnostics_channel';
 import { CommonModule } from '@angular/common';
 import { MetaMaskSDK } from '@metamask/sdk';
-import { Router } from '@angular/router';
 import { catchError, map, throwError } from 'rxjs';
 import { InfuraAPIKey } from '../../../env';
 

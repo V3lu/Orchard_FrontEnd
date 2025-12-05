@@ -4,14 +4,14 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule }
 import { User } from '../../../Models/user';
 import { CommonModule } from '@angular/common';
 import { APIConnectionService } from '../../../APIConnectionService/api-connection.service';
-import { Router, RouterOutlet, RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { LoggedUserDataServiceService } from '../../../LoggedUserData/logged-user-data-service.service';
 import { catchError, map, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterOutlet, RouterLink, RouterModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterLink, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
