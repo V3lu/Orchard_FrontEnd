@@ -50,7 +50,7 @@ export class LoggedUserProfileComponent {
   LoggedUserRole! : String;
   selectedWojewodztwo : any;
 
-  userSex?: string = 'sex';
+  userGender?: string = 'sex';
 
   doesUsernameExists : boolean = false;
   doesEmailExist : boolean = false;
@@ -63,7 +63,7 @@ export class LoggedUserProfileComponent {
   constructor(private fb : FormBuilder, private apiComm : APIConnectionService, private loggedUserData : LoggedUserDataServiceService, private router1 : Router){
     this.LoggedUserRole = loggedUserData.GetLoggedUserRole();
     this.formData = new FormData();
-    this.userSex = loggedUserData.LoggedUser.Sex;
+    this.userGender = loggedUserData.LoggedUser.Gender;
     this.selectedWojewodztwo = loggedUserData.LoggedUser.Region;
     this.userdataform = this.fb.group({
       username:loggedUserData.LoggedUser.Username,

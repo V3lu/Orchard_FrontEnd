@@ -4,6 +4,6 @@ export interface userMessage{
     Age?: number;
     MessageText?: string;
     SendDate?: Date;
-    Sex?:string;
+    Gender?:string;
     AuthorId?: any;
 }

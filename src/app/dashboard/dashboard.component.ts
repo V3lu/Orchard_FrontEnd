@@ -56,54 +56,6 @@ export class DashboardComponent implements OnInit{
     }, 0);
 
     const ID = this.LoggedUserData.GetLoggedUserId();
-    this.apiConn.GetLast5UserMessagess(ID)
-    .pipe(
-      catchError(error => {
-        return throwError(() => new Error("Error occured"));
-      }),
-      map((response) => {
-        const data = response.body;
-        return{data};
-      })
-    )
-    .subscribe({
-      next: (result) => {
-        this.messagess = result.data.messages;
-        this.users = result.data.users;  
-        this.messagess.forEach((message: { authorId: any; content: any; sendDate: Date;}) => {
-          this.users.forEach((user: { id: any; username: string; age: number; sex: string}) => {
-            if(message.authorId == user.id){
-              let prof = new Blob;
-              let um : userMessage = {
-                ProfilePhoto: prof,
-                Sex: user.sex,
-                Username: user.username,
-                Age: user.age,
-                MessageText: ": " + message.content,
-                SendDate: message.sendDate,
-                AuthorId: user.id
-              }
-              if(!this.objectsToDisplay.includes(um)){
-                this.objectsToDisplay.push(um);
-              }
-              
-              this.apiConn.GetUserImage(user.id).subscribe(blob => {
-                const url = window.URL.createObjectURL(blob);   
-                Array.prototype.forEach.call(document.getElementsByClassName(user.username), 
-                  item => item.setAttribute("src",url));
-                Array.prototype.forEach.call(document.getElementsByClassName(user.username), 
-                  item => item.setAttribute("class",user.username + " is-rounded"));
-              });
-            }
-          });
-        });
-
-
-      },
-      error: (error) => {
-        console.error('API Error:', error);
-      }
-    });
 
     this.apiComm.PaymentGettxhash(this.LoggedUserData.LoggedUser.Id)
     .pipe(
@@ -142,13 +94,13 @@ export class DashboardComponent implements OnInit{
       map((response) => {
         const data = response.body;
         let users = new Array();
-        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; sex: string}) => {
+        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; gender: string}) => {
           let user : User = {
             Id: element.id,
             Username: element.username,
             Email: element.email,
             Role: element.role,
-            Sex: element.sex,
+            Gender: element.gender,
             Age: element.age,
             Region: element.region,
             City: element.city,

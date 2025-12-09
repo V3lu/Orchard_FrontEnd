@@ -33,9 +33,9 @@
             </div>
 
             <div class="field">
-              <label class="label has-text-white">Sex</label>
+              <label class="label has-text-white">Gender</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input is-hovered is-rounded is-link" [value]="sexSignal()" (keyup)="assignSex($event)" type="text" formControlName="Sex" (blur)="CheckSex()">
+                <input class="input is-hovered is-rounded is-link" [value]="genderSignal()" (keyup)="assignGender($event)" type="text" formControlName="Gender" (blur)="CheckGender()">
                 <span class="icon is-small is-left">
                   <i class="fa fas fa-venus-mars"></i>
                 </span>

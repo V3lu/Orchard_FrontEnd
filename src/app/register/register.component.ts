@@ -23,7 +23,7 @@ export class RegisterComponent {
   regionSignal = signal('');
   citySignal = signal('');
   ageSignal = signal('');
-  sexSignal = signal('');
+  genderSignal = signal('');
 
   usernameForm : String = "";
   passwordForm : String = "";
@@ -47,7 +47,7 @@ export class RegisterComponent {
   isAgeEmpty : boolean = false;
   isEmailProper : boolean = true;
   ispasswordProper : boolean = true;
-  isSexProper: boolean = false;
+  isGenderProper: boolean = false;
   isCityProper : boolean = true;
   isAgeProper : boolean = true;
   registeredUser : User = {};
@@ -63,7 +63,7 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       Username: [''],
       Password: [''],
-      Sex: [''],
+      Gender: [''],
       Email: [''],
       Region: [''],
       Age: [''],
@@ -76,9 +76,9 @@ export class RegisterComponent {
     const value = (event.target as HTMLInputElement).value;
     this.usernameSignal.set(value);
   }
-  assignSex(event : Event){
+  assignGender(event : Event){
     const value = (event.target as HTMLInputElement).value;
-    this.sexSignal.set(value);
+    this.genderSignal.set(value);
   }
   assignPassword(event : Event){
     const value = (event.target as HTMLInputElement).value;
@@ -150,20 +150,20 @@ export class RegisterComponent {
     }
   }
 
-  CheckSex(){
-    const value = this.sexSignal();
+  CheckGender(){
+    const value = this.genderSignal();
     if(value == ""){
-      this.isSexProper = false;
+      this.isGenderProper = false;
       document.getElementById("btnsub")?.setAttribute('disabled', 'disabled');
     }
     else{
-      this.isSexProper = true;
+      this.isGenderProper = true;
       this.UnlockSubmitButton()
     }
   }
 
   Register(event : Event){
-    if(this.usernameSignal() == '' || this.sexSignal() == '' || this.passwordSignal() == '' || this.emailSignal() == '' || this.citySignal() == '' || this.ageSignal() == '' || this.selectedWojewodztwo == ''){
+    if(this.usernameSignal() == '' || this.genderSignal() == '' || this.passwordSignal() == '' || this.emailSignal() == '' || this.citySignal() == '' || this.ageSignal() == '' || this.selectedWojewodztwo == ''){
       this.cannotSendFormData = true;
     }
     else{
@@ -286,7 +286,7 @@ export class RegisterComponent {
   }
 
   UnlockSubmitButton(){
-    if(this.usernameSignal() != '' && this.sexSignal() != '' && this.passwordSignal() != '' && this.emailSignal() != '' && this.citySignal() != '' && this.ageSignal() != '' && this.regionSignal() != '' && this.IsFormDoneCorrectly()){
+    if(this.usernameSignal() != '' && this.genderSignal() != '' && this.passwordSignal() != '' && this.emailSignal() != '' && this.citySignal() != '' && this.ageSignal() != '' && this.regionSignal() != '' && this.IsFormDoneCorrectly()){
       document.getElementById("btnsub")?.removeAttribute('disabled');
     }
   }

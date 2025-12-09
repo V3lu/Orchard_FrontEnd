@@ -65,7 +65,7 @@ export class LoginPageComponent{
             Email: data.user.email,
             Role: data.user.role,
             Age: data.user.age,
-            Sex: data.user.sex,
+            Gender: data.user.gender,
             Region: data.user.region,
             City: data.user.city,
             ProfilePhoto: data.user.ProfilePhoto

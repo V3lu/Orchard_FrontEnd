@@ -29,7 +29,7 @@ export class PeopleSearchComponent{
       region:loggedUserData.LoggedUser.Region,
       age:loggedUserData.LoggedUser.Age,
       city:loggedUserData.LoggedUser.City,
-      sex:loggedUserData.LoggedUser.Sex
+      gender:loggedUserData.LoggedUser.Gender
     })
     this.formData = new FormData();
 
@@ -56,7 +56,7 @@ export class PeopleSearchComponent{
           Email: data.userToReturn.email,
           Role: data.userToReturn.role,
           Age: data.userToReturn.age,
-          Sex: data.userToReturn.sex,
+          Gender: data.userToReturn.gender,
           Region: data.userToReturn.region,
           City: data.userToReturn.city,
         };
@@ -81,7 +81,7 @@ export class PeopleSearchComponent{
     this.formData.set('Region', this.userdataform.get('region')?.value),
     this.formData.set('Age', this.userdataform.get('age')?.value),
     this.formData.set('City', this.userdataform.get('city')?.value),
-    this.formData.set('Sex', this.userdataform.get('sex')?.value),
+    this.formData.set('Gender', this.userdataform.get('gender')?.value),
     this.index = 0;
     this.apiComm.GetUsersSearchedForWithFilters(this.formData)
     .pipe(
@@ -94,13 +94,13 @@ export class PeopleSearchComponent{
       map((response) => {
         const data = response.body;
         let users = new Array();
-        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; sex: string}) => {
+        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; gender: string}) => {
           let user : User = {
             Id: element.id,
             Username: element.username,
             Email: element.email,
             Role: element.role,
-            Sex: element.sex,
+            Gender: element.gender,
             Age: element.age,
             Region: element.region,
             City: element.city,

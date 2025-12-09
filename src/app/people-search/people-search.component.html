@@ -31,9 +31,9 @@
                       </div>
                     </div>
                       <div class="field">
-                        <label class="label has-text-white">Sex</label>
+                        <label class="label has-text-white">Gender</label>
                         <div class="control has-icons-left has-icons-right">
-                          <input formControlName="sex" class="input is-hovered is-rounded is-link" type="text" placeholder="male">
+                          <input formControlName="gender" class="input is-hovered is-rounded is-link" type="text" placeholder="male">
                           <span class="icon is-small is-left">
                             <i class="fa fas fa-venus-mars"></i>
                           </span>
@@ -59,7 +59,7 @@
                                       <p>
                                         <strong>{{user.Username + "  "}}</strong>
                                         <small>{{user.Age}}</small>
-                                        <small>{{user.Sex}}</small>
+                                        <small>{{user.Gender}}</small>
                                         @if(user.Role == "FUA"){
                                           <img src="assets/images/fullaccessicon.png" width="19px" height="19px" alt="Image" />
                                         }
