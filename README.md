@@ -1,4 +1,4 @@
-# OrchFrontAnguPraca
+# Orchard Front-End
 
 This project is a Front-End of thee Orchard System. It utilizes Angular framework and bulma library.
 
