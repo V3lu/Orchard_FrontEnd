@@ -2,10 +2,7 @@
     <div class="hero-body">
         <div class="container">
             <div class="columns is-vcentered">
-                <div class="column has-text-centered">
-    
-                </div>
-                <div class="column has-text-centered">
+                <div class="column has-text-centered is-four-fifths">
                   <div class="columns is-multiline">
                     <div class="column is-one-quarter" *ngFor="let user of usersArrived">
                         <div class="box has-background-light">
@@ -21,7 +18,7 @@
                                 <div class="content">
                                   <p>
                                     <strong>{{user.Username + "  "}}</strong>
-                                    <small>{{user.Age}}</small>
+                                    <small>{{user.Age + "  "}}</small>
                                     <small>{{user.Gender}}</small>
                                     @if(user.Role == "FUA"){
                                       <img src="assets/images/fullaccessicon.png" width="19px" height="19px" alt="Image" />
@@ -51,9 +48,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="column has-text-centered">
-                    
                 </div>
             </div>
           </div>

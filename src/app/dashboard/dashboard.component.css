@@ -23,3 +23,12 @@ img{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.columns{
+    justify-content: space-around;
+    display: flex;
+}
+
+nav{
+    justify-content: center;
+}

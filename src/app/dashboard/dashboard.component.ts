@@ -94,8 +94,10 @@ export class DashboardComponent implements OnInit{
       map((response) => {
         const data = response.body;
         console.log(data);
+
         let users = new Array();
-        data.users.forEach((element: { age: any; city: any; email: any; id: any; profilePhotoPath: any; region: any; gender: any, role: any; username: string}) => {
+
+        data.forEach((element: { age: any; city: any; email: any; gender: any; id: any; profilePhotoPath: any; region: any; role: any; username: string}) => {
           let user : User = {
             Id: element.id,
             Username: element.username,
