@@ -32,12 +32,12 @@ export class APIConnectionService {
   PaymentsGettxhash = 'https://localhost:7023/api/Payments/gettxhash';
   UserControllerGetUsersNearby = 'https://localhost:7023/api/Users/nearby-users';
 
-  Get5UsersFromLocation(Id : any){
+  Get5UsersFromLocation(Id : any, Region : string, City : string){
     const token = this.TC.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.post<any>(this.UserControllerGetUsersNearby, {Id}, {observe: 'response', headers: headers })
+    return this.http.post<any>(this.UserControllerGetUsersNearby, {Id, Region, City}, {observe: 'response', headers: headers })
   }
 
   PermitMesssageSend(Id : any){

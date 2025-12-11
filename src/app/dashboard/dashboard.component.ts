@@ -86,15 +86,16 @@ export class DashboardComponent implements OnInit{
       }
     });
 
-    this.apiComm.Get5UsersFromLocation(this.LoggedUserData.LoggedUser.Id)
+    this.apiComm.Get5UsersFromLocation(this.LoggedUserData.LoggedUser.Id, this.LoggedUserData.LoggedUser.Region!, this.LoggedUserData.LoggedUser.City!)
     .pipe(
       catchError(error => {
         return throwError(() => new Error("Error occured"));
       }),
       map((response) => {
         const data = response.body;
+        console.log(data);
         let users = new Array();
-        data.users.forEach((element: { id: any; username: any; email: any; role: any; age: any; region: any; city: any; ProfilePhoto: any; gender: string}) => {
+        data.users.forEach((element: { age: any; city: any; email: any; id: any; profilePhotoPath: any; region: any; gender: any, role: any; username: string}) => {
           let user : User = {
             Id: element.id,
             Username: element.username,
@@ -104,7 +105,7 @@ export class DashboardComponent implements OnInit{
             Age: element.age,
             Region: element.region,
             City: element.city,
-            ProfilePhoto: element.ProfilePhoto
+            ProfilePhoto: element.profilePhotoPath
           };
           users.push(user);
         });
