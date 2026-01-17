@@ -83,6 +83,7 @@ export class RegisterComponent {
   assignPassword(event : Event){
     const value = (event.target as HTMLInputElement).value;
     this.passwordSignal.set(value);
+    this.CheckPassword();
   }
   assignEmail(event : Event){
     const value = (event.target as HTMLInputElement).value;
